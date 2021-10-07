@@ -12,13 +12,6 @@ namespace MP_ObjectTransparency.Scripts.Game
         [Range(0f, 1f)]
         [SerializeField] private float alpha;
 
-        private Material material;
-        
-
-        private void Awake()
-        {
-            material = materialRenderer.material;
-        }
 
         private void OnValidate()
         {
@@ -27,7 +20,7 @@ namespace MP_ObjectTransparency.Scripts.Game
 
         private void ChangeMaterialAlpha()
         {
-            var mat = materialRenderer.material;
+            var mat = materialRenderer.sharedMaterial;
             Color oldColor = mat.color;
             Color newColor = new Color(oldColor.r, oldColor.g, oldColor.b, alpha);
             mat.color = newColor;
