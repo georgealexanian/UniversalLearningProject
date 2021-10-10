@@ -1,4 +1,4 @@
-Shader "Custom/MaskShader"
+Shader "Custom/InvisibleMaskShader"
 {
 	Properties{}
 
