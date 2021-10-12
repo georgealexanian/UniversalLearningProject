@@ -1,15 +1,14 @@
 namespace MP_JellyMesh.Scripts.Game
 {
-    using System;
     using UnityEngine;
 
     public class JellyMesh : MonoBehaviour
     {
         [SerializeField] private MeshFilter meshFilter;
 
-        public float bounceSpeed;
-        public float fallForce;
-        public float stiffness;
+        [SerializeField] private float bounceSpeed = 1000;
+        [SerializeField] private float fallForce = 1000;
+        [SerializeField] private float stiffness = 100;
 
         private Mesh mesh;
         private JellyVertex[] jellyVertices;
@@ -18,6 +17,11 @@ namespace MP_JellyMesh.Scripts.Game
         
         private void Awake()
         {
+            if (meshFilter == null)
+            {
+                meshFilter = GetComponent<MeshFilter>();
+            }
+            
             mesh = meshFilter.mesh;
 
             GetVertices();
