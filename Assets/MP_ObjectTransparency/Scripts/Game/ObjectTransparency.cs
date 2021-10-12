@@ -2,9 +2,6 @@ using UnityEngine;
 
 namespace MP_ObjectTransparency.Scripts.Game
 {
-    using System;
-    using UnityEngine.SocialPlatforms;
-
     public class ObjectTransparency : MonoBehaviour
     {
         [SerializeField] private Renderer materialRenderer;
