@@ -28,6 +28,8 @@ namespace MP_JellyMesh.Scripts.Editor
             {
                 SetAllChildJellyMeshValues(targetType);
             }
+            
+            EditorUtility.SetDirty(target);
         }
 
         private void AddColliders(JellyMeshContainer jellyMeshContainer)
