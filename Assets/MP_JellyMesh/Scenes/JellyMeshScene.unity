@@ -714,25 +714,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4619309191738098906, guid: fbcb8b2779b2c4f43b1b594e869d3725, type: 3}
   m_PrefabInstance: {fileID: 5157092445228689103}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &919132148471600452 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1322796741495989870, guid: d862a9ebe50d846f795b45386755bb04, type: 3}
-  m_PrefabInstance: {fileID: 2205336037232948010}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &919132148471600453
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148471600452}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2832883524527332911, guid: 03399b312e51247dd95cfc87f78d6cb2, type: 3}
 --- !u!1001 &2205336037232948010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -740,18 +721,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1472707245}
     m_Modifications:
-    - target: {fileID: 520652852461651745, guid: d862a9ebe50d846f795b45386755bb04, type: 3}
-      propertyPath: fallForce
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 520652852461651745, guid: d862a9ebe50d846f795b45386755bb04, type: 3}
-      propertyPath: stiffness
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 520652852461651745, guid: d862a9ebe50d846f795b45386755bb04, type: 3}
-      propertyPath: bounceSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 1322796741495989870, guid: d862a9ebe50d846f795b45386755bb04, type: 3}
       propertyPath: m_Name
       value: wooden_sphere
@@ -799,10 +768,6 @@ PrefabInstance:
     - target: {fileID: 1806035861701786836, guid: d862a9ebe50d846f795b45386755bb04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6481555752319401825, guid: d862a9ebe50d846f795b45386755bb04, type: 3}
-      propertyPath: bounceSpeed
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d862a9ebe50d846f795b45386755bb04, type: 3}

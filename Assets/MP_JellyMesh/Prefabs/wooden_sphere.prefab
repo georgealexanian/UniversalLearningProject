@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1806035861701786836}
   - component: {fileID: 3368568935239054193}
   - component: {fileID: 674265406256842683}
-  - component: {fileID: 6481555752319401825}
   - component: {fileID: 520652852461651745}
+  - component: {fileID: 6481555752319401825}
   - component: {fileID: 919132148471600453}
   m_Layer: 0
   m_Name: wooden_sphere
@@ -84,6 +84,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &520652852461651745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322796741495989870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e9228674cf874256ac3d72307ac4b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceSpeed: 10
+  fallForce: 20
+  stiffness: 2
 --- !u!114 &6481555752319401825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,23 +113,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshFilter: {fileID: 3368568935239054193}
   bounceSpeed: 10
-  fallForce: 5
-  stiffness: 10
---- !u!114 &520652852461651745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322796741495989870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e9228674cf874256ac3d72307ac4b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bounceSpeed: 10
-  fallForce: 5
-  stiffness: 10
+  fallForce: 20
+  stiffness: 2
 --- !u!64 &919132148471600453
 MeshCollider:
   m_ObjectHideFlags: 0
