@@ -5,7 +5,7 @@ namespace MP_JellyMesh.Scripts.Game
     public class JellyMesh : MonoBehaviour
     {
         [SerializeField] private MeshFilter meshFilter;
-
+        
         [SerializeField] private float bounceSpeed = 1000;
         [SerializeField] private float fallForce = 1000;
         [SerializeField] private float stiffness = 100;

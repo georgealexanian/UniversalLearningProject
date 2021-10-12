@@ -630,13 +630,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875735957}
-  m_LocalRotation: {x: 0.48877358, y: 0, z: 0, w: 0.8724107}
-  m_LocalPosition: {x: 0, y: 11.99, z: -3.92}
+  m_LocalRotation: {x: 0.053991694, y: 0, z: 0, w: 0.9985414}
+  m_LocalPosition: {x: 0, y: 5.5, z: -5.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 58.52, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 6.19, y: 0, z: 0}
 --- !u!114 &875735961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -797,9 +797,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshFilter: {fileID: 1077315072}
-  bounceSpeed: 0
-  fallForce: 0
-  stiffness: 0
+  bounceSpeed: 10
+  fallForce: 5
+  stiffness: 2
 --- !u!114 &1077315082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,9 +813,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshFilter: {fileID: 1077315074}
-  bounceSpeed: 0
-  fallForce: 0
-  stiffness: 0
+  bounceSpeed: 10
+  fallForce: 5
+  stiffness: 2
 --- !u!114 &1077315083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,9 +829,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshFilter: {fileID: 1077315076}
-  bounceSpeed: 0
-  fallForce: 0
-  stiffness: 0
+  bounceSpeed: 10
+  fallForce: 5
+  stiffness: 2
 --- !u!114 &1077315084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,9 +845,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshFilter: {fileID: 1077315078}
-  bounceSpeed: 0
-  fallForce: 0
-  stiffness: 0
+  bounceSpeed: 10
+  fallForce: 5
+  stiffness: 2
 --- !u!114 &1077315085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,9 +861,79 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshFilter: {fileID: 1077315080}
-  bounceSpeed: 0
-  fallForce: 0
-  stiffness: 0
+  bounceSpeed: 10
+  fallForce: 5
+  stiffness: 2
+--- !u!64 &1077315096
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077315071}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5507673926517023597, guid: 0945b8abdd5c84e4fb0e978c5e07634e, type: 3}
+--- !u!64 &1077315097
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077315073}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3517491496714742517, guid: 0945b8abdd5c84e4fb0e978c5e07634e, type: 3}
+--- !u!64 &1077315098
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077315075}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3921568967233161584, guid: 0945b8abdd5c84e4fb0e978c5e07634e, type: 3}
+--- !u!64 &1077315099
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077315077}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4008851479428171581, guid: 0945b8abdd5c84e4fb0e978c5e07634e, type: 3}
+--- !u!64 &1077315100
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077315079}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2310963669225717097, guid: 0945b8abdd5c84e4fb0e978c5e07634e, type: 3}
 --- !u!1 &1369198915 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0945b8abdd5c84e4fb0e978c5e07634e, type: 3}
@@ -881,9 +951,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9228674cf874256ac3d72307ac4b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceSpeed: 1000
-  fallForce: 1000
-  stiffness: 100
+  bounceSpeed: 10
+  fallForce: 5
+  stiffness: 10
 --- !u!1 &1472707244
 GameObject:
   m_ObjectHideFlags: 0

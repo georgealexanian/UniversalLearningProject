@@ -18,10 +18,29 @@ namespace MP_JellyMesh.Scripts.Editor
             var targetType = (JellyMeshContainer) target;
             
             GUILayout.Space(SpaceBetweenButtons);
+            if (GUILayout.Button("Add colliders to all Jelly Mesh components"))
+            {
+                AddColliders(targetType);
+            }
+            
+            GUILayout.Space(SpaceBetweenButtons);
             if (GUILayout.Button("Set All Child JellyMesh values"))
             {
                 SetAllChildJellyMeshValues(targetType);
             }
+        }
+
+        private void AddColliders(JellyMeshContainer jellyMeshContainer)
+        {
+            var jellyMeshes = jellyMeshContainer
+                .GetComponentsInChildren<JellyMesh>()
+                .Where(x => !x.TryGetComponent<Collider>(out var collider))
+                .ToList();
+            
+            jellyMeshes.ForEach(x =>
+            {
+                x.gameObject.AddComponent<MeshCollider>();
+            });
         }
 
         private void SetAllChildJellyMeshValues(JellyMeshContainer jellyMeshContainer)
