@@ -67,14 +67,6 @@ namespace MP_JellyMesh.Scripts.Game
             mesh.RecalculateTangents();
         }
 
-        private void ApplyPressureToPoint(Vector3 point, float pressure)
-        {
-            for (int i = 0; i < jellyVertices.Length; i++)
-            {
-                jellyVertices[i].ApplyPressureToVertex(transform, point, pressure);
-            }
-        }
-        
         private void OnCollisionEnter(Collision other)
         {
             ContactPoint[] collisionPoints = other.contacts;
@@ -98,6 +90,14 @@ namespace MP_JellyMesh.Scripts.Game
                     Vector3 inputPoint = hit.point + (hit.point * 0.1f);
                     ApplyPressureToPoint(inputPoint, fallForce);
                 }
+            }
+        }
+        
+        private void ApplyPressureToPoint(Vector3 point, float pressure)
+        {
+            for (int i = 0; i < jellyVertices.Length; i++)
+            {
+                jellyVertices[i].ApplyPressureToVertex(transform, point, pressure);
             }
         }
     }
