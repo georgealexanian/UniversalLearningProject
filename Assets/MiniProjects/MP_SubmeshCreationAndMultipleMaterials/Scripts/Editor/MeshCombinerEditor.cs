@@ -38,7 +38,22 @@ namespace MiniProjects.MP_SubmeshCreationAndMultipleMaterials.Scripts.Editor
 
             MeshFilter[] filters = meshCombiner.GetComponentsInChildren<MeshFilter>();
 
-            Mesh finalMesh;
+            InitializePrefabAndCreateNewMesh(ref meshCombiner, out Mesh finalMesh);
+
+            CombineInstance[] combineInstances = new CombineInstance[filters.Length];
+            ConfigureCombineInstances(ref combineInstances, filters, meshCombiner);
+            
+            CombineAndSetMeshes(ref finalMesh, combineInstances, meshCombiner);
+
+            transform.rotation = oldRotation;
+            transform.position = oldPosition;
+
+            MarkChildrenToBeRemoved(transform);
+            SaveMeshToFolder(ref finalMesh);
+        }
+
+        private void InitializePrefabAndCreateNewMesh(ref MeshCombiner meshCombiner, out Mesh finalMesh)
+        {
             if (meshCombiner.TryGetComponent<MeshFilter>(out var meshFilter))
             {
                 var sharedMesh = meshFilter.sharedMesh;
@@ -53,8 +68,10 @@ namespace MiniProjects.MP_SubmeshCreationAndMultipleMaterials.Scripts.Editor
                 meshCombiner.gameObject.AddComponent<MeshFilter>();
                 meshCombiner.gameObject.AddComponent<MeshRenderer>();
             }
+        }
 
-            CombineInstance[] combineInstances = new CombineInstance[filters.Length];
+        private void ConfigureCombineInstances(ref CombineInstance[] combineInstances, MeshFilter[] filters, MeshCombiner meshCombiner)
+        {
             for (int i = 0; i < filters.Length; i++)
             {
                 if (filters[i].transform == meshCombiner.transform)
@@ -66,20 +83,26 @@ namespace MiniProjects.MP_SubmeshCreationAndMultipleMaterials.Scripts.Editor
                 combineInstances[i].mesh = filters[i].sharedMesh;
                 combineInstances[i].transform = filters[i].transform.localToWorldMatrix;
             }
-            
+        }
+
+        private void CombineAndSetMeshes(ref Mesh finalMesh, CombineInstance[] combineInstances, MeshCombiner meshCombiner)
+        {
             finalMesh.CombineMeshes(combineInstances);
             meshCombiner.GetComponent<MeshFilter>().sharedMesh = finalMesh;
+        }
 
-            transform.rotation = oldRotation;
-            transform.position = oldPosition;
-
+        private void MarkChildrenToBeRemoved(Transform transform)
+        {
             foreach (Transform child in transform)
             {
                 child.gameObject.SetActive(false);
                 child.name = "TO BE REMOVED MANUALLY";
             }
-            
-            AssetDatabase.CreateAsset(finalMesh, $"Assets/MiniProjects/MP_SubmeshCreationAndMultipleMaterials/Resources/Meshes/{finalMesh.name}.mesh");
+        }
+
+        private void SaveMeshToFolder(ref Mesh mesh)
+        {
+            AssetDatabase.CreateAsset(mesh, $"Assets/MiniProjects/MP_SubmeshCreationAndMultipleMaterials/Resources/Meshes/{mesh.name}.mesh");
             AssetDatabase.SaveAssets();
         }
     }
