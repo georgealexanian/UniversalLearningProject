@@ -41,7 +41,10 @@ namespace MiniProjects.MP_SubmeshCreationAndMultipleMaterials.Scripts.Editor
             Mesh finalMesh;
             if (meshCombiner.TryGetComponent<MeshFilter>(out var meshFilter))
             {
-                finalMesh = meshFilter.sharedMesh;
+                var sharedMesh = meshFilter.sharedMesh;
+                finalMesh = sharedMesh == null 
+                    ? new Mesh {name = meshCombiner.gameObject.name}
+                    : sharedMesh;
             }
             else
             {
@@ -72,7 +75,8 @@ namespace MiniProjects.MP_SubmeshCreationAndMultipleMaterials.Scripts.Editor
 
             foreach (Transform child in transform)
             {
-                DestroyImmediate(child.gameObject);
+                child.gameObject.SetActive(false);
+                child.name = "TO BE REMOVED MANUALLY";
             }
         }
     }
