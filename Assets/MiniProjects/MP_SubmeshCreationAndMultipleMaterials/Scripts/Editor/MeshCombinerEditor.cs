@@ -21,6 +21,8 @@ namespace MiniProjects.MP_SubmeshCreationAndMultipleMaterials.Scripts.Editor
             {
                 CombineChildMeshesIntoOne(targetType);
             }
+            
+            EditorUtility.SetDirty(target);
         }
 
         
@@ -44,6 +46,9 @@ namespace MiniProjects.MP_SubmeshCreationAndMultipleMaterials.Scripts.Editor
             else
             {
                 finalMesh = new Mesh {name = meshCombiner.gameObject.name};
+                
+                meshCombiner.gameObject.AddComponent<MeshFilter>();
+                meshCombiner.gameObject.AddComponent<MeshRenderer>();
             }
 
             CombineInstance[] combineInstances = new CombineInstance[filters.Length];
@@ -67,7 +72,7 @@ namespace MiniProjects.MP_SubmeshCreationAndMultipleMaterials.Scripts.Editor
 
             foreach (Transform child in transform)
             {
-                DestroyImmediate(child);
+                DestroyImmediate(child.gameObject);
             }
         }
     }
