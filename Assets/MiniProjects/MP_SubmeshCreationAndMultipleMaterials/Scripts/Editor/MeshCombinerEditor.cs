@@ -78,6 +78,9 @@ namespace MiniProjects.MP_SubmeshCreationAndMultipleMaterials.Scripts.Editor
                 child.gameObject.SetActive(false);
                 child.name = "TO BE REMOVED MANUALLY";
             }
+            
+            AssetDatabase.CreateAsset(finalMesh, $"Assets/MiniProjects/MP_SubmeshCreationAndMultipleMaterials/Resources/Meshes/{finalMesh.name}.mesh");
+            AssetDatabase.SaveAssets();
         }
     }
 }
