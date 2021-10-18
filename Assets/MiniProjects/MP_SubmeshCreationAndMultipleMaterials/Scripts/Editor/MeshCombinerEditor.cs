@@ -44,8 +44,6 @@ namespace MiniProjects.MP_SubmeshCreationAndMultipleMaterials.Scripts.Editor
 
             // CombineInstance[] combineInstances = new CombineInstance[filters.Length];
             ConfigureCombineInstances(out CombineInstance[] combineInstances, filters, meshCombiner);
-            // var adfdsda = new adfadfadsdf();
-            // adfdsda.AdvancedMerge(out var combineInstances, meshCombiner.gameObject);
             
             CombineAndSetMeshes(ref finalMesh, combineInstances, meshCombiner);
 
@@ -76,75 +74,74 @@ namespace MiniProjects.MP_SubmeshCreationAndMultipleMaterials.Scripts.Editor
 
         private void ConfigureCombineInstances(out CombineInstance[] combineInstances, MeshFilter[] filters, MeshCombiner meshCombiner)
         {
-            var allRenderers = meshCombiner.GetComponentsInChildren<MeshRenderer>();
-            List<Material> materials =
-                new HashSet<Material>(allRenderers
-                    .Where(x => x.sharedMaterial != null)
-                    .Select(x => x.sharedMaterial))
-                    .ToList();
-
-            List<Mesh> subMeshes = new List<Mesh>();
-            for (int matIndex = 0; matIndex < materials.Count; matIndex++)
-            {
-                var sharingThisMat = allRenderers
-                    .ToList()
-                    .FindAll(x => x.sharedMaterial != null && x.sharedMaterial == materials[matIndex])
-                    .Select(x => x.GetComponent<MeshFilter>())
-                    .ToList();
-
-                CombineInstance[] localCombineInstances = new CombineInstance[sharingThisMat.Count];
-                for (int j = 0; j < sharingThisMat.Count; j++)
-                {
-                    if (sharingThisMat[j].transform == meshCombiner.transform)
-                    {
-                        continue;
-                    }
-                    
-                    localCombineInstances[j].subMeshIndex = matIndex;
-                    localCombineInstances[j].mesh = sharingThisMat[j].sharedMesh;
-                    localCombineInstances[j].transform = Matrix4x4.identity;
-                }
-
-                var subMesh = new Mesh();
-                subMesh.CombineMeshes(localCombineInstances, true);
-                
-                subMeshes.Add(subMesh);
-            }
-
-            List<CombineInstance> finalCombineInstances = new List<CombineInstance>();
-            foreach (var subMesh in subMeshes)
-            {
-                CombineInstance finalCombineInstance = new CombineInstance
-                {
-                    subMeshIndex = 0, 
-                    mesh = subMesh, 
-                    transform = Matrix4x4.identity
-                };
-
-                finalCombineInstances.Add(finalCombineInstance);
-            }
-
-            combineInstances = finalCombineInstances.ToArray();
-
-            
-            //OLD LOGIC!!! THE CODE BELOW WORKS PERFECTLY EXCEPT IT DOES NOT TAKE INTO ACCOUNT DIFFERENT MATERIALS.
-            // for (int i = 0; i < filters.Length; i++)
+            // var allRenderers = meshCombiner.GetComponentsInChildren<MeshRenderer>();
+            // List<Material> materials =
+            //     new HashSet<Material>(allRenderers
+            //         .Where(x => x.sharedMaterial != null)
+            //         .Select(x => x.sharedMaterial))
+            //         .ToList();
+            //
+            // List<Mesh> subMeshes = new List<Mesh>();
+            // for (int matIndex = 0; matIndex < materials.Count; matIndex++)
             // {
-            //     if (filters[i].transform == meshCombiner.transform)
+            //     var sharingThisMat = allRenderers
+            //         .ToList()
+            //         .FindAll(x => x.sharedMaterial != null && x.sharedMaterial == materials[matIndex])
+            //         .Select(x => x.GetComponent<MeshFilter>())
+            //         .ToList();
+            //
+            //     CombineInstance[] localCombineInstances = new CombineInstance[sharingThisMat.Count];
+            //     for (int j = 0; j < sharingThisMat.Count; j++)
             //     {
-            //         continue;
+            //         if (sharingThisMat[j].transform == meshCombiner.transform)
+            //         {
+            //             continue;
+            //         }
+            //         
+            //         localCombineInstances[j].subMeshIndex = matIndex;
+            //         localCombineInstances[j].mesh = sharingThisMat[j].sharedMesh;
+            //         localCombineInstances[j].transform = Matrix4x4.identity;
             //     }
             //
-            //     combineInstances[i].subMeshIndex = 0;
-            //     combineInstances[i].mesh = filters[i].sharedMesh;
-            //     combineInstances[i].transform = filters[i].transform.localToWorldMatrix;
+            //     var subMesh = new Mesh();
+            //     subMesh.CombineMeshes(localCombineInstances, true);
+            //     
+            //     subMeshes.Add(subMesh);
             // }
+            //
+            // List<CombineInstance> finalCombineInstances = new List<CombineInstance>();
+            // foreach (var subMesh in subMeshes)
+            // {
+            //     CombineInstance finalCombineInstance = new CombineInstance
+            //     {
+            //         subMeshIndex = 0, 
+            //         mesh = subMesh, 
+            //         transform = Matrix4x4.identity
+            //     };
+            //
+            //     finalCombineInstances.Add(finalCombineInstance);
+            // }
+            //
+            // combineInstances = finalCombineInstances.ToArray();
+
+            combineInstances = new CombineInstance[filters.Length];
+            for (int i = 0; i < filters.Length; i++)
+            {
+                if (filters[i].transform == meshCombiner.transform)
+                {
+                    continue;
+                }
+           
+                combineInstances[i].subMeshIndex = 0;
+                combineInstances[i].mesh = filters[i].sharedMesh;
+                combineInstances[i].transform = filters[i].transform.localToWorldMatrix;
+            }
         }
 
         private void CombineAndSetMeshes(ref Mesh finalMesh, CombineInstance[] combineInstances, MeshCombiner meshCombiner)
         {
-            // finalMesh.CombineMeshes(combineInstances, false);
-            // meshCombiner.GetComponent<MeshFilter>().sharedMesh = finalMesh;
+            finalMesh.CombineMeshes(combineInstances, true);
+            meshCombiner.GetComponent<MeshFilter>().sharedMesh = finalMesh;
         }
 
         private void MarkChildrenToBeRemoved(Transform transform)
