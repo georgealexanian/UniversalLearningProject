@@ -4,7 +4,7 @@ namespace MiniProjects.MP_UnityAnimator.Scripts.Game
 
     public class CharacterAnimator : MonoBehaviour
     {
-        [SerializeField] private Animator animator;
+        [SerializeField] private UnityEngine.Animator animator;
         
         private void Update()
         {
@@ -42,6 +42,21 @@ namespace MiniProjects.MP_UnityAnimator.Scripts.Game
         private void StandUp()
         {
             animator.SetTrigger("GetUpFaceUp");
+        }
+        
+        public void StartedAnimClip(string clipName)
+        {
+            Debug.Log(clipName);
+        }
+        
+        public void FinishedAnimClip(string clipName)
+        {
+            Debug.Log(clipName);
+        }
+        
+        public void PlayingAnimClip(string clipName)
+        {
+            
         }
     }
 }
