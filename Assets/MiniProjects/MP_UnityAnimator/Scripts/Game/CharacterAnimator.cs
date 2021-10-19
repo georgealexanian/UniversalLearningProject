@@ -1,6 +1,7 @@
 namespace MiniProjects.MP_UnityAnimator.Scripts.Game
 {
     using UnityEngine;
+    using UnityEngine.Scripting;
 
     public class CharacterAnimator : MonoBehaviour
     {
@@ -57,6 +58,12 @@ namespace MiniProjects.MP_UnityAnimator.Scripts.Game
         public void PlayingAnimClip(string clipName)
         {
             
+        }
+
+        [Preserve]
+        public void KickFinished()
+        {
+            Debug.Log("Kick Finished Event");
         }
     }
 }
