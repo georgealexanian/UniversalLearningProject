@@ -38,6 +38,22 @@ namespace MiniProjects.MP_UnityAnimator.Scripts.Game
             {
                 animator.SetTrigger("Dance");
             }
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                animator.SetTrigger("WalkAndRunBTMix");
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                var floatValue = animator.GetFloat("WalkAndRunBTVertical");
+                floatValue -= 0.1f;
+                animator.SetFloat("WalkAndRunBTVertical", floatValue);
+            }
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                var floatValue = animator.GetFloat("WalkAndRunBTVertical");
+                floatValue += 0.1f;
+                animator.SetFloat("WalkAndRunBTVertical", floatValue);
+            }
         }
 
         private void StandUp()
