@@ -3635,7 +3635,7 @@ GameObject:
   - component: {fileID: 6709266941690211836}
   - component: {fileID: 6709266941690211839}
   m_Layer: 0
-  m_Name: Area
+  m_Name: AreaStaticNavmesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
