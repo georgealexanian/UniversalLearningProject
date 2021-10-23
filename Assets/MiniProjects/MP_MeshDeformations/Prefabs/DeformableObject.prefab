@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 851501897243537587}
   - component: {fileID: 4359202842058866454}
   - component: {fileID: 1988911713333431260}
-  - component: {fileID: 1583238985962556230}
-  - component: {fileID: 5418513042591675142}
   - component: {fileID: 2161756044740974882}
+  - component: {fileID: 3732492524909122806}
   m_Layer: 0
-  m_Name: wooden_sphere
+  m_Name: DeformableObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,37 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1583238985962556230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43616364970502665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e9228674cf874256ac3d72307ac4b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bounceSpeed: 10
-  fallForce: 20
-  stiffness: 2
---- !u!114 &5418513042591675142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43616364970502665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5091636d944f84e51bbf42d10d019ae0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meshFilter: {fileID: 4359202842058866454}
-  bounceSpeed: 10
-  fallForce: 20
-  stiffness: 2
 --- !u!64 &2161756044740974882
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -129,3 +97,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2832883524527332911, guid: 03399b312e51247dd95cfc87f78d6cb2, type: 3}
+--- !u!114 &3732492524909122806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43616364970502665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90f8ae461ead545278fa50366f5f087b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  springForce: 20
+  damping: 1

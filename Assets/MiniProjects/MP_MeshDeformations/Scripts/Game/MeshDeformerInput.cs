@@ -1,11 +1,10 @@
 namespace MiniProjects.MP_MeshDeformations.Scripts.Game
 {
-    using System;
     using UnityEngine;
 
     public class MeshDeformerInput : MonoBehaviour {
 
-        [SerializeField] private float force = 10f;
+        [SerializeField] private float force = 200;
         [SerializeField] private float forceOffset = 0.1f;
 
         private Camera mainCamera;

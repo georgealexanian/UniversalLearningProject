@@ -1,17 +1,22 @@
 namespace MiniProjects.MP_MeshDeformations.Scripts.Game
 {
-    using System;
     using UnityEngine;
     
     [RequireComponent(typeof(MeshFilter))]
     public class MeshDeformer : MonoBehaviour
     {
+        [SerializeField] private float springForce = 20f;
+        [SerializeField] private float damping = 5f;
+
         private Mesh deformingMesh;
         private Vector3[] originalVertices;
         private Vector3[] displacedVertices;
         private Vector3[] vertexVelocities;
 
+        private Vector3 currentDispacement;
+
         private Camera mainCamera;
+
 
         private void Start()
         {
@@ -39,6 +44,9 @@ namespace MiniProjects.MP_MeshDeformations.Scripts.Game
         
         private void UpdateVertex (int i) 
         {
+            currentDispacement = displacedVertices[i] - originalVertices[i];
+            vertexVelocities[i] -= currentDispacement * springForce * Time.deltaTime;
+            displacedVertices[i] *= 1f - damping * Time.deltaTime;
             displacedVertices[i] += vertexVelocities[i] * Time.deltaTime;
         }
 
