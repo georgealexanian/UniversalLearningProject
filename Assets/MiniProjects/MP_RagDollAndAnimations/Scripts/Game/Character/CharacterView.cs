@@ -6,5 +6,11 @@ namespace MiniProjects.MP_RagDollAndAnimations.Scripts.Game.Character
     public class CharacterView : MonoBehaviour
     {
         [field: SerializeField] public ZombieRagDollView ZombieRagDollView { get; private set; }
+
+        
+        private void Awake()
+        {
+            ZombieRagDollView.PrepareAnimatedState();
+        }
     }
 }
