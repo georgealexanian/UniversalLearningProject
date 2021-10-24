@@ -715,6 +715,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89fafbbffa0b4f048934efd805767e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ragDollRigidBodies:
+  - {fileID: 1786198591}
+  - {fileID: 1786198613}
+  - {fileID: 1786198614}
+  - {fileID: 1786198607}
+  - {fileID: 1786198610}
+  - {fileID: 1786198589}
+  - {fileID: 1786198601}
+  - {fileID: 1786198602}
+  - {fileID: 1786198598}
+  - {fileID: 1786198587}
+  - {fileID: 1786198595}
+  ragDollColliders:
+  - {fileID: 1786198592}
+  - {fileID: 1786198617}
+  - {fileID: 1786198615}
+  - {fileID: 1786198609}
+  - {fileID: 1786198611}
+  - {fileID: 1786198593}
+  - {fileID: 1786198605}
+  - {fileID: 1786198603}
+  - {fileID: 1786198599}
+  - {fileID: 1786198594}
+  - {fileID: 1786198596}
 --- !u!1 &1504182603512903353
 GameObject:
   m_ObjectHideFlags: 0

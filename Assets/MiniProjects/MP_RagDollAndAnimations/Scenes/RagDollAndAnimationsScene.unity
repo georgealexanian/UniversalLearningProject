@@ -225,6 +225,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1187809818}
     m_Modifications:
+    - target: {fileID: 533332062777610778, guid: 12ba73ff1942349e9a8ffe9ae5e41447, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.00000039488077
+      objectReference: {fileID: 0}
     - target: {fileID: 5967941084827862286, guid: 12ba73ff1942349e9a8ffe9ae5e41447, type: 3}
       propertyPath: m_Name
       value: Character
