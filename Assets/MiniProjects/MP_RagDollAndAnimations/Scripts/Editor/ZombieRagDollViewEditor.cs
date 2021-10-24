@@ -42,6 +42,18 @@ namespace MiniProjects.MP_RagDollAndAnimations.Scripts.Editor
                 CacheRagDollColliders(targetType);
             }
             
+            GUILayout.Space(OffsetSpace);
+            if (GUILayout.Button("STAND UP"))
+            {
+                StandUpCharacter(targetType);
+            }
+            
+            GUILayout.Space(OffsetSpace);
+            if (GUILayout.Button("BECOME RAGDOLL"))
+            {
+                BecomeRagDoll(targetType);
+            }
+            
             EditorUtility.SetDirty(target);
         }
 
@@ -89,6 +101,16 @@ namespace MiniProjects.MP_RagDollAndAnimations.Scripts.Editor
             type
                 .GetField("ragDollColliders", BindingFlags.Instance | BindingFlags.NonPublic)?
                 .SetValue(view, colliders);
+        }
+
+        private void StandUpCharacter(ZombieRagDollView view)
+        {
+            view.StandUp();
+        }
+
+        private void BecomeRagDoll(ZombieRagDollView view)
+        {
+            view.PrepareRagDollState();
         }
     }
 }

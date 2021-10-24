@@ -11,27 +11,23 @@ namespace MiniProjects.MP_RagDollAndAnimations.Scripts.Game.Character.Model
         [SerializeField] private Transform rootBone;
         [SerializeField] private ZombieModelAnimator modelAnimator;
 
+        public bool IsRagDoll { get; private set; } = false;
         
-        private void LateUpdate()
-        {
-            Debug.Log(Vector3.Dot(rootBone.up, Vector3.up));
-        }
 
         private bool CheckFaceDown()
         {
-            return Vector3.Dot(rootBone.up, Vector3.up) > 0;
+            return Vector3.Dot(rootBone.up, Vector3.up) < 0;
         }
 
         public void StandUp()
         {
-            if (CheckFaceDown())
+            if (!IsRagDoll)
             {
-                
+                return;
             }
-            else
-            {
-                
-            }
+            
+            modelAnimator.StandUpAnim(CheckFaceDown());
+            PrepareAnimatedState();
         }
 
         public void PrepareRagDollState()
@@ -44,6 +40,8 @@ namespace MiniProjects.MP_RagDollAndAnimations.Scripts.Game.Character.Model
             ragDollColliders.ForEach(x => x.enabled = true);
 
             modelAnimator.EnableAnimator(false);
+
+            IsRagDoll = true;
         }
 
         public void PrepareAnimatedState()
@@ -56,8 +54,8 @@ namespace MiniProjects.MP_RagDollAndAnimations.Scripts.Game.Character.Model
             ragDollColliders.ForEach(x => x.enabled = false);
             
             modelAnimator.EnableAnimator(true);
+            
+            IsRagDoll = false;
         }
-
-        
     }
 }
