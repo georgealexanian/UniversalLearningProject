@@ -26,6 +26,8 @@ namespace MiniProjects.MP_RagDollAndAnimations.Scripts.Game.Character.Model
                 return;
             }
             
+            PreparePositions();
+
             modelAnimator.StandUpAnim(CheckFaceDown());
             PrepareAnimatedState();
         }
@@ -56,6 +58,14 @@ namespace MiniProjects.MP_RagDollAndAnimations.Scripts.Game.Character.Model
             modelAnimator.EnableAnimator(true);
             
             IsRagDoll = false;
+        }
+
+        private void PreparePositions()
+        {
+            var localPosition = rootBone.localPosition;
+            transform.localPosition += new Vector3(localPosition.x, 0, localPosition.z);
+            localPosition = new Vector3(0, 0, 0);
+            rootBone.localPosition = localPosition;
         }
     }
 }

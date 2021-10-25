@@ -43,13 +43,13 @@ namespace MiniProjects.MP_RagDollAndAnimations.Scripts.Editor
             }
             
             GUILayout.Space(OffsetSpace);
-            if (GUILayout.Button("STAND UP"))
+            if (GUILayout.Button("'''''STAND UP'''''"))
             {
                 StandUpCharacter(targetType);
             }
             
             GUILayout.Space(OffsetSpace);
-            if (GUILayout.Button("BECOME RAGDOLL"))
+            if (GUILayout.Button("''''''BECOME RAGDOLL'''''"))
             {
                 BecomeRagDoll(targetType);
             }
