@@ -35,9 +35,9 @@ Shader "Custom/MaskedLitShader"
     }
 
     SubShader
-    {
+    {  
         Tags { 
-            "Queue" = "Geometry+1"
+            "Queue" = "Transparent"
             "RenderType" = "Opaque" 
             "RenderPipeline" = "UniversalPipeline" "UniversalMaterialType" = "SimpleLit"
             "IgnoreProjector" = "True" "ShaderModel"="4.5"}
@@ -60,20 +60,6 @@ Shader "Custom/MaskedLitShader"
         }
     }
 
-    SubShader
-    {
-        Tags { 
-            "RenderType" = "Opaque" 
-            "Queue" = "Geometry+1"
-            "RenderPipeline" = "UniversalPipeline" "UniversalMaterialType" = "SimpleLit"
-             "IgnoreProjector" = "True" "ShaderModel"="2.0"}
-        
-        Pass
-        {
-            
-        }
-    }
-    
     Fallback "Hidden/Universal Render Pipeline/FallbackError"
     CustomEditor "UnityEditor.Rendering.Universal.ShaderGUI.SimpleLitShader"
 }
