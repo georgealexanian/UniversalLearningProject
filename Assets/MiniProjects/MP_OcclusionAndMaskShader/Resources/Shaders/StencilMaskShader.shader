@@ -11,6 +11,7 @@ Shader "Custom/StencilMaskShader"
             }
 
             ZWrite Off
+            ColorMask 0
         }
     }
 }
