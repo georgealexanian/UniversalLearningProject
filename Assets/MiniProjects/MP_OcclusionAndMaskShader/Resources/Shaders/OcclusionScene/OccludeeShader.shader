@@ -10,18 +10,13 @@ Shader "Custom/Occludee"
     {
         Pass
         {
+            ZTest Less
+
             Tags
             {
                 "RenderType"="Opaque"
-                "Queue" = "Geometry"
+                "Queue" = "Geometry+1"
                 "LightMode" = "UniversalForward"
-            }
-
-            Stencil
-            {
-                Ref 11
-                Comp Greater
-                Pass Keep
             }
 
             CGPROGRAM
@@ -62,18 +57,13 @@ Shader "Custom/Occludee"
 
         Pass
         {
+            ZTest GEqual
+
             Tags
             {
                 "RenderType"="Opaque"
-                "Queue" = "Geometry"
+                "Queue" = "Geometry+1"
                 "LightMode" = "SRPDefaultUnlit"
-            }
-
-            Stencil
-            {
-                Ref 11
-                Comp LEqual
-                Pass Keep
             }
 
             HLSLPROGRAM

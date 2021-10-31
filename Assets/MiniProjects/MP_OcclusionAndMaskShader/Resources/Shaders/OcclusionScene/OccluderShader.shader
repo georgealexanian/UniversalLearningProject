@@ -10,19 +10,10 @@ Shader "Custom/Occluder"
     {
         Tags
         {
+            "RenderType"="Opaque"
             "Queue" = "Geometry"
         }
         
-        ZWrite Off
-        ColorMask 0
-
-        Stencil
-        {
-            Ref 11
-            Comp Always
-            Pass Replace
-        }
-
         Pass
         {
             CGPROGRAM
