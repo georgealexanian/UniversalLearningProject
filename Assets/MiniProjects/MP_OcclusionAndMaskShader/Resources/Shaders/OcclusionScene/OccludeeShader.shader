@@ -15,7 +15,7 @@ Shader "Custom/Occludee"
             Tags
             {
                 "RenderType"="Opaque"
-                "Queue" = "Geometry+1"
+                "Queue" = "Geometry"
                 "LightMode" = "UniversalForward"
             }
 
@@ -62,7 +62,7 @@ Shader "Custom/Occludee"
             Tags
             {
                 "RenderType"="Opaque"
-                "Queue" = "Geometry+1"
+                "Queue" = "Geometry"
                 "LightMode" = "SRPDefaultUnlit"
             }
 

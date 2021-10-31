@@ -11,7 +11,7 @@ Shader "Custom/Occluder"
         Tags
         {
             "RenderType"="Opaque"
-            "Queue" = "Geometry"
+            "Queue" = "Geometry-1"
         }
         
         Pass
