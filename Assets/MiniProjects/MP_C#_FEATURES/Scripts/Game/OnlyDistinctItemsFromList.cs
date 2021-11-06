@@ -36,7 +36,6 @@ namespace MiniProjects.Scripts.Game
                 .Select(coll => coll.First());
         }
         
-        
         private class StudentInfo
         {
             public int ID;

@@ -22,39 +22,43 @@ namespace MiniProjects.MP_RagDollAndAnimations.Scripts.Editor
             if (GUILayout.Button("Fix RagDoll projections"))
             {
                 FixRagDollChildrenProjections(targetType);
+                EditorUtility.SetDirty(target);
             }
             
             GUILayout.Space(OffsetSpace);
             if (GUILayout.Button("Fix InBetween collisions"))
             {
                 FixInBetweenCollisions(targetType);
+                EditorUtility.SetDirty(target);
             }
             
             GUILayout.Space(OffsetSpace);
             if (GUILayout.Button("Cache RigidBodies"))
             {
                 CacheRagDollRigidBodies(targetType);
+                EditorUtility.SetDirty(target);
             }
             
             GUILayout.Space(OffsetSpace);
             if (GUILayout.Button("Cache Colliders"))
             {
                 CacheRagDollColliders(targetType);
+                EditorUtility.SetDirty(target);
             }
             
             GUILayout.Space(OffsetSpace);
             if (GUILayout.Button("'''''STAND UP'''''"))
             {
                 StandUpCharacter(targetType);
+                EditorUtility.SetDirty(target);
             }
             
             GUILayout.Space(OffsetSpace);
             if (GUILayout.Button("''''''BECOME RAGDOLL'''''"))
             {
                 BecomeRagDoll(targetType);
+                EditorUtility.SetDirty(target);
             }
-            
-            EditorUtility.SetDirty(target);
         }
 
         private void FixRagDollChildrenProjections(ZombieRagDollView view)
