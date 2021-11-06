@@ -633,19 +633,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8581755204045336056, guid: 06ba7524e227b44c8b9301265666d23f, type: 3}
       propertyPath: m_Name
-      value: Sparks
+      value: SparksPS
       objectReference: {fileID: 0}
     - target: {fileID: 8581755204045619044, guid: 06ba7524e227b44c8b9301265666d23f, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8581755204045619044, guid: 06ba7524e227b44c8b9301265666d23f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.20000008
-      objectReference: {fileID: 0}
-    - target: {fileID: 8581755204045619044, guid: 06ba7524e227b44c8b9301265666d23f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.20000008
       objectReference: {fileID: 0}
     - target: {fileID: 8581755204045619044, guid: 06ba7524e227b44c8b9301265666d23f, type: 3}
       propertyPath: m_LocalPosition.x

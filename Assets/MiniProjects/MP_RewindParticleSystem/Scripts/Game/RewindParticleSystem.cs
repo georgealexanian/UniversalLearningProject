@@ -7,7 +7,7 @@ namespace MiniProjects.MP_RewindParticleSystem.Scripts.Game
     [ExecuteInEditMode]
     public class RewindParticleSystem : MonoBehaviour
     {
-        [Range(0,3f)] public float Timeline;
+        [Range(0,10f)] public float Timeline;
         [SerializeField] private ParticleSystem Ps;
 
 
