@@ -684,21 +684,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain
       objectReference: {fileID: 0}
-    - target: {fileID: 4320488511886331523, guid: b5ec00d0c1ac24a81bf999061f4d4c26, type: 3}
-      propertyPath: depth
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4320488511886331523, guid: b5ec00d0c1ac24a81bf999061f4d4c26, type: 3}
-      propertyPath: scale
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4320488511886331523, guid: b5ec00d0c1ac24a81bf999061f4d4c26, type: 3}
-      propertyPath: width
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 4320488511886331523, guid: b5ec00d0c1ac24a81bf999061f4d4c26, type: 3}
-      propertyPath: height
-      value: 512
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5ec00d0c1ac24a81bf999061f4d4c26, type: 3}
