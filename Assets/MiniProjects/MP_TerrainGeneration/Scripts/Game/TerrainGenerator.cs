@@ -7,19 +7,29 @@ namespace MiniProjects.MP_TerrainGeneration.Scripts.Game
         [SerializeField] private int width = 256;
         [SerializeField] private int height = 256;
         [SerializeField] private int depth = 20;
-
+        
         [SerializeField] private float scale = 20f;
+        [SerializeField] private float offsetX = 100f;
+        [SerializeField] private float offsetY = 100f;
+        
 
         private Terrain terrain;
         private TerrainData terrainData;
-
+        
 
         private void Awake()
         {
             terrain = GetComponent<Terrain>();
             terrainData = terrain.terrainData;
 
+            RandomizeOffsets();
             terrainData = GenerateTerrainDate(terrainData);
+        }
+
+        private void RandomizeOffsets()
+        {
+            offsetX = Random.Range(0f, 9999f);
+            offsetY = Random.Range(0f, 9999f);
         }
 
         private TerrainData GenerateTerrainDate(TerrainData terData)
@@ -49,8 +59,8 @@ namespace MiniProjects.MP_TerrainGeneration.Scripts.Game
 
         private float CalculateHeight(int x, int y)
         {
-            float xCoord = (float) x / width * scale;
-            float yCoord = (float) y / height * scale;
+            float xCoord = (float) x / width * scale + offsetX;
+            float yCoord = (float) y / height * scale + offsetY;
 
             return Mathf.PerlinNoise(xCoord, yCoord);
         }
