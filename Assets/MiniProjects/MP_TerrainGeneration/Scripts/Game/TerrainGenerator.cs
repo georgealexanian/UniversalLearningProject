@@ -1,6 +1,8 @@
 namespace MiniProjects.MP_TerrainGeneration.Scripts.Game
 {
+    using System;
     using UnityEngine;
+    using Random = UnityEngine.Random;
 
     public class TerrainGenerator : MonoBehaviour
     {
@@ -11,7 +13,9 @@ namespace MiniProjects.MP_TerrainGeneration.Scripts.Game
         [SerializeField] private float scale = 20f;
         [SerializeField] private float offsetX = 100f;
         [SerializeField] private float offsetY = 100f;
-        
+
+        [SerializeField] private bool updateOnce = true;
+        [SerializeField] private float updateSpeed = 10f;
 
         private Terrain terrain;
         private TerrainData terrainData;
@@ -23,7 +27,20 @@ namespace MiniProjects.MP_TerrainGeneration.Scripts.Game
             terrainData = terrain.terrainData;
 
             RandomizeOffsets();
-            terrainData = GenerateTerrainDate(terrainData);
+
+            if (updateOnce)
+            {
+                terrainData = GenerateTerrainDate(terrainData);
+            }
+        }
+
+        private void Update()
+        {
+            if (!updateOnce)
+            {
+                ScaleOffsets();
+                terrainData = GenerateTerrainDate(terrainData);
+            }
         }
 
         private void RandomizeOffsets()
@@ -32,6 +49,12 @@ namespace MiniProjects.MP_TerrainGeneration.Scripts.Game
             offsetY = Random.Range(0f, 9999f);
         }
 
+        private void ScaleOffsets()
+        {
+            offsetX += Time.deltaTime * updateSpeed;
+            offsetY += Time.deltaTime * updateSpeed;
+        }
+        
         private TerrainData GenerateTerrainDate(TerrainData terData)
         {
             terData.heightmapResolution = width + 1;

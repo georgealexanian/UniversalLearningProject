@@ -93,3 +93,7 @@ MonoBehaviour:
   height: 512
   depth: 20
   scale: 20
+  offsetX: 100
+  offsetY: 100
+  updateOnce: 0
+  updateSpeed: 10
