@@ -15,7 +15,10 @@ namespace MiniProjects.MP_TerrainGeneration.Scripts.Game
         [SerializeField] private float offsetY = 100f;
 
         [SerializeField] private bool updateOnce = true;
+        
         [SerializeField] private float updateSpeed = 10f;
+        [SerializeField] private bool updateX = true;
+        [SerializeField] private bool updateY = true;
 
         private Terrain terrain;
         private TerrainData terrainData;
@@ -51,8 +54,14 @@ namespace MiniProjects.MP_TerrainGeneration.Scripts.Game
 
         private void ScaleOffsets()
         {
-            offsetX += Time.deltaTime * updateSpeed;
-            offsetY += Time.deltaTime * updateSpeed;
+            if (updateX)
+            {
+                offsetX += Time.deltaTime * updateSpeed;
+            }
+            if (updateY)
+            {
+                offsetY += Time.deltaTime * updateSpeed;
+            }
         }
         
         private TerrainData GenerateTerrainDate(TerrainData terData)

@@ -96,4 +96,6 @@ MonoBehaviour:
   offsetX: 100
   offsetY: 100
   updateOnce: 0
-  updateSpeed: 10
+  updateSpeed: 5
+  updateX: 1
+  updateY: 1
