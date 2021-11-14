@@ -5,7 +5,7 @@ Shader "Custom/Occludee"
         [MainTexture] _MainTex("Base Map (RGB) Smoothness / Alpha (A)", 2D) = "white" {}
         [MainColor] _BaseColor("Base Color", Color) = (1, 1, 1, 1)
     }
-
+ 
     SubShader
     {
         Pass
