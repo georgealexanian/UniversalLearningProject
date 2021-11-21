@@ -108,3 +108,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ced21ec0c2b4d5780c6e7689d363f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brush: {fileID: 2362533404691333923, guid: ba1c452bd5e9c460990e6454e32b3ee1, type: 3}
+  brushSize: 1
