@@ -7,7 +7,9 @@ namespace MiniProjects.MP_DrawingUsingGameObjectInstantiation.Scripts.Game
     public class PaintableSaver : MonoBehaviour
     {
         [SerializeField] private RenderTexture paintedTexture;
+        [SerializeField] private SaveType saveType = SaveType.PNG;
 
+        
         public void SaveDrawing()
         {
             StartCoroutine(Save());
@@ -25,7 +27,7 @@ namespace MiniProjects.MP_DrawingUsingGameObjectInstantiation.Scripts.Game
 
         private Texture2D SampleTexture2D()
         {
-            var texture2D = new Texture2D(paintedTexture.width, paintedTexture.height);
+            var texture2D = new Texture2D(paintedTexture.width, paintedTexture.height, TextureFormat.ARGB32, false);
             texture2D.ReadPixels(new Rect(0, 0, paintedTexture.width, paintedTexture.height), 0, 0);
             texture2D.Apply();
             return texture2D;
@@ -33,8 +35,15 @@ namespace MiniProjects.MP_DrawingUsingGameObjectInstantiation.Scripts.Game
 
         private void EncodeAndSave(Texture2D texture2D)
         {
-            var encodedData = texture2D.EncodeToPNG();
-            File.WriteAllBytes(Application.dataPath + "/Painting.png", encodedData);
+            var encodedData = saveType == SaveType.PNG 
+                ? texture2D.EncodeToPNG() : saveType == SaveType.JPG 
+                    ? texture2D.EncodeToJPG() 
+                    : texture2D.EncodeToPNG();
+            var format = saveType == SaveType.PNG 
+                ? "png" : saveType == SaveType.JPG 
+                    ? "jpg"
+                    : "png";
+            File.WriteAllBytes(Application.dataPath + "/Painting." + format, encodedData);
         }
     }
 }
