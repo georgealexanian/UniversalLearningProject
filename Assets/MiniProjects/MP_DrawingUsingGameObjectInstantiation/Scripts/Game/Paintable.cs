@@ -49,7 +49,7 @@ namespace MiniProjects.MP_DrawingUsingGameObjectInstantiation.Scripts.Game
                 lastDrawPosition, 
                 quaternion.identity,
                 transform);
-            drawInstance.transform.localScale = Vector3.one * brushSize;
+            drawInstance.transform.localScale = Vector3.one * brushSize; 
         }
     }
 }
