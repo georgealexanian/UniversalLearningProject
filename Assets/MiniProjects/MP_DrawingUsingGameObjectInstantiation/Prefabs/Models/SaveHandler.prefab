@@ -43,4 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4840cdebb3614845afd4aa4d60e50f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPaintable: {fileID: 0}
+  paintedTexture: {fileID: 8400000, guid: 76ea683eef82048afaafa9e29fa3e5ed, type: 2}
