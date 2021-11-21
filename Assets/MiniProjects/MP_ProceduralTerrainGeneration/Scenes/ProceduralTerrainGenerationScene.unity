@@ -584,6 +584,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2775852246297312937, guid: d16cb2adac6134f41a532cbc462ffa6f, type: 3}
+      propertyPath: drawGizmos
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775852246297312937, guid: d16cb2adac6134f41a532cbc462ffa6f, type: 3}
+      propertyPath: heightSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775852246297312937, guid: d16cb2adac6134f41a532cbc462ffa6f, type: 3}
+      propertyPath: forwardTiling
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775852246297312937, guid: d16cb2adac6134f41a532cbc462ffa6f, type: 3}
+      propertyPath: horizontalTiling
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775852246297312937, guid: d16cb2adac6134f41a532cbc462ffa6f, type: 3}
+      propertyPath: generationAwaitTime
+      value: 0.001
+      objectReference: {fileID: 0}
     - target: {fileID: 2775852246297312943, guid: d16cb2adac6134f41a532cbc462ffa6f, type: 3}
       propertyPath: m_Name
       value: ProceduralTerrain

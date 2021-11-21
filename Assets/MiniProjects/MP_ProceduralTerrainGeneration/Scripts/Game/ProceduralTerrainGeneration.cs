@@ -1,6 +1,5 @@
 namespace MiniProjects.MP_ProceduralTerrainGeneration.Scripts.Game
 {
-    using System;
     using System.Collections;
     using UnityEngine;
 
@@ -8,14 +7,23 @@ namespace MiniProjects.MP_ProceduralTerrainGeneration.Scripts.Game
     {
         [SerializeField] private int horizontalSize = 20;
         [SerializeField] private int forwardSize = 20;
+        [Range(-5, 5)]
+        [SerializeField] private float heightSize = 2f;
         
-        [SerializeField] private float generationAwaitTime = 0.03f;
+        [SerializeField] private float horizontalTiling = 0.3f;
+        [SerializeField] private float forwardTiling = 0.3f;
 
+        [SerializeField] private float generationAwaitTime = 0.03f;
+        [SerializeField] private bool updateRuntime = false;
+        [SerializeField] private bool drawGizmos = true;
+        
         private Mesh mesh;
         private MeshFilter meshFilter;
         
         private int[] triangles;
         private Vector3[] vertices;
+
+        private Coroutine coroutine;
 
 
         private void Awake()
@@ -28,15 +36,19 @@ namespace MiniProjects.MP_ProceduralTerrainGeneration.Scripts.Game
             mesh = new Mesh();
             meshFilter.mesh = mesh;
             
-            StartCoroutine(CreateShape());
+            coroutine = StartCoroutine(CreateShape());
         }
 
         private void Update()
         {
+            if (updateRuntime)
+            {
+                coroutine = StartCoroutine(CreateShape(true));
+            }
             UpdateMesh();
         }
 
-        private IEnumerator CreateShape()
+        private IEnumerator CreateShape(bool overrideDelay = false)
         {
             vertices = new Vector3[(horizontalSize + 1) * (forwardSize + 1)];
 
@@ -45,8 +57,8 @@ namespace MiniProjects.MP_ProceduralTerrainGeneration.Scripts.Game
             {
                 for (int x = 0; x <= horizontalSize; x++)
                 {
-                    vertices[i] = new Vector3(x, 0, z);
-
+                    float height = Mathf.PerlinNoise(x * horizontalTiling, z * forwardTiling) * heightSize;
+                    vertices[i] = new Vector3(x, height, z);
                     i++;
                 }
             }
@@ -68,7 +80,10 @@ namespace MiniProjects.MP_ProceduralTerrainGeneration.Scripts.Game
                     vert++;
                     tris += 6;
 
-                    yield return new WaitForSeconds(generationAwaitTime);
+                    if (!overrideDelay)
+                    {
+                        yield return new WaitForSeconds(generationAwaitTime);
+                    }
                 }
 
                 vert++;
@@ -99,6 +114,11 @@ namespace MiniProjects.MP_ProceduralTerrainGeneration.Scripts.Game
 
         private void DrawVertexGizmos()
         {
+            if (!drawGizmos)
+            {
+                return;
+            }
+            
             for (int i = 0; i < vertices.Length; i++)
             {
                 Gizmos.color = Color.cyan;
