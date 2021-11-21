@@ -109,4 +109,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brush: {fileID: 2362533404691333923, guid: ba1c452bd5e9c460990e6454e32b3ee1, type: 3}
-  brushSize: 1
+  brushSize: 2
