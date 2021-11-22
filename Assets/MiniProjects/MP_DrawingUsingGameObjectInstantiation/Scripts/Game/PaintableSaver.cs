@@ -27,7 +27,7 @@ namespace MiniProjects.MP_DrawingUsingGameObjectInstantiation.Scripts.Game
 
         private Texture2D SampleTexture2D()
         {
-            var texture2D = new Texture2D(paintedTexture.width, paintedTexture.height, TextureFormat.ARGB32, false);
+            var texture2D = new Texture2D(paintedTexture.width, paintedTexture.height, TextureFormat.RGB24, false);
             texture2D.ReadPixels(new Rect(0, 0, paintedTexture.width, paintedTexture.height), 0, 0);
             texture2D.Apply();
             return texture2D;
