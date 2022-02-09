@@ -2,7 +2,7 @@ Shader "Example/URPUnlitShaderColor"
 {
     Properties
     {
-
+        [MainColor] _BaseColor ("Color To Show", Color) = (0.5, 0, 1, 1)
     }
 
     SubShader
@@ -21,6 +21,10 @@ Shader "Example/URPUnlitShaderColor"
             #pragma fragment frag
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+
+            CBUFFER_START(UnityPerMaterial)
+            half4 _BaseColor;
+            CBUFFER_END
 
             struct INPUT
             {
@@ -41,7 +45,7 @@ Shader "Example/URPUnlitShaderColor"
 
             half4 frag() : SV_TARGET
             {
-                return half4(0.5, 1, 0, 1);
+                return _BaseColor;
             }
             
             ENDHLSL
