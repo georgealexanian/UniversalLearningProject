@@ -53,15 +53,15 @@ Shader "Example/URPUnlitShaderBasic"
             // The vertex shader definition with properties defined in the Varyings
             // structure. The type of the vert function must match the type (struct)
             // that it returns.
-            OUTPUT vert(INPUT IN)
+            OUTPUT vert(INPUT input)
             {
                 // Declaring the output object (OUT) with the Varyings struct.
-                OUTPUT OUT;
+                OUTPUT output;
                 // The TransformObjectToHClip function transforms vertex positions
                 // from object space to homogenous clip space.
-                OUT.positionHCS = TransformObjectToHClip(IN.positionOS.xyz);
+                output.positionHCS = TransformObjectToHClip(input.positionOS.xyz);
                 // Returning the output.
-                return OUT;
+                return output;
             }
 
             // The fragment shader definition.
