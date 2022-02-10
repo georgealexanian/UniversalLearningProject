@@ -3,7 +3,7 @@ Shader "Example/URPUnlitShaderTexture"
     Properties
     {
         [MainColor] _BaseColor ("Base Color", Color) = (0, 0, 0, 1)
-        [MainTexture] _BaseMap ("Base Map", 2D) = "White
+        [MainTexture] _BaseMap ("Base Map", 2D) = "White"
     }
 
     SubShader
