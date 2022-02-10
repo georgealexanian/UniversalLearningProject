@@ -3,7 +3,6 @@ Shader "Example/URPUnlitShaderNormal"
     Properties
     {
         [MainColor] _BaseColor ("Base Color", Color) = (1, 1, 1, 1)
-        [MainTexture] _BaseMap ("Base Texture", 2D) = "White"
     }
 
     SubShader
@@ -17,47 +16,47 @@ Shader "Example/URPUnlitShaderNormal"
         Pass
         {
             HLSLPROGRAM
-            
             #pragma vertex vert
             #pragma fragment frag
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-            TEXTURE2D(_BaseMap);
-            SAMPLER(sampler_BaseMap);
-
             CBUFFER_START(UnityPerMaterial)
             half4 _BaseColor;
-            float4 _BaseMap_ST;
             CBUFFER_END
 
             struct INPUT
             {
                 half4 position : POSITION;
-                float2 uv : TEXCOORD0;
+                half3 normal : NORMAL;
             };
 
             struct OUTPUT
             {
                 half4 position : SV_POSITION;
-                float2 uv : TEXCOORD0;
+                half3 normal : TEXCOORD0;
             };
- 
+
             OUTPUT vert(INPUT input)
             {
                 OUTPUT output;
                 output.position = TransformObjectToHClip(input.position.xyz);
-                output.uv = TRANSFORM_TEX(input.uv, _BaseMap);
-
+                // Use the TransformObjectToWorldNormal function to transform the
+                // normals from object to world space. This function is from the
+                // SpaceTransforms.hlsl file, which is referenced in Core.hlsl.
+                output.normal = TransformObjectToWorldNormal(input.normal);
+                // output.normal = TransformWorldToObjectNormal(input.normal);
                 return output;
             }
 
-            half4 frag(INPUT input) : SV_TARGET
+            half4 frag(OUTPUT output) : SV_TARGET
             {
-                half4 color = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, input.uv);
+                half4 color = 0;
+                //To render negative normal vector components, use the compression technique.
+                //To compress the range of normal component values (-1..1) to color value range (0..1), change the following line:
+                color.rgb = output.normal * 0.5 + 0.5;
                 return color;
             }
-            
             ENDHLSL
         }
     }
