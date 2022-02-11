@@ -10,12 +10,15 @@ Shader "Example/TransparentAlphaBlending"
     {
         Tags
         {
-            "RenderQueue" = "Opaque"
+            "RenderQueue" = "Transparent"
             "RenderPipeline" = "UniversalPipeline"
+            "Queue" = "Transparent"
         }
 
         Pass
         {
+            Blend SrcAlpha OneMinusSrcAlpha
+
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -53,6 +56,10 @@ Shader "Example/TransparentAlphaBlending"
             half4 frag(VERTEXTOFRAGMENT v2f) : SV_TARGET
             {
                 half4 color = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, v2f.uv);
+                if (color.a == 0)
+                {
+                    color.rgba = _BaseColor;
+                }
                 return color;
             }
             ENDHLSL
