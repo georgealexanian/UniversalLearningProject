@@ -345,7 +345,6 @@ GameObject:
   - component: {fileID: 285730616}
   - component: {fileID: 285730619}
   - component: {fileID: 285730618}
-  - component: {fileID: 285730617}
   m_Layer: 0
   m_Name: URPUnlitShaderTexture
   m_TagString: Untagged
@@ -367,19 +366,6 @@ Transform:
   m_Father: {fileID: 1187809818}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &285730617
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285730615}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &285730618
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -440,7 +426,6 @@ GameObject:
   - component: {fileID: 355701403}
   - component: {fileID: 355701406}
   - component: {fileID: 355701405}
-  - component: {fileID: 355701404}
   m_Layer: 0
   m_Name: TransparentAlphaBlendingDoubleTexture
   m_TagString: Untagged
@@ -462,19 +447,6 @@ Transform:
   m_Father: {fileID: 1187809818}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &355701404
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355701402}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &355701405
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -535,7 +507,6 @@ GameObject:
   - component: {fileID: 508210928}
   - component: {fileID: 508210931}
   - component: {fileID: 508210930}
-  - component: {fileID: 508210929}
   m_Layer: 0
   m_Name: URPUnlitShaderBasic
   m_TagString: Untagged
@@ -557,19 +528,6 @@ Transform:
   m_Father: {fileID: 1187809818}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &508210929
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508210927}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &508210930
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -766,7 +724,6 @@ GameObject:
   - component: {fileID: 1362240445}
   - component: {fileID: 1362240448}
   - component: {fileID: 1362240447}
-  - component: {fileID: 1362240446}
   m_Layer: 0
   m_Name: URPUnlitShaderColor
   m_TagString: Untagged
@@ -788,19 +745,6 @@ Transform:
   m_Father: {fileID: 1187809818}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1362240446
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1362240444}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1362240447
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1020,7 +964,6 @@ GameObject:
   - component: {fileID: 1960007779}
   - component: {fileID: 1960007782}
   - component: {fileID: 1960007781}
-  - component: {fileID: 1960007780}
   m_Layer: 0
   m_Name: TransparentAlphaBlending
   m_TagString: Untagged
@@ -1042,19 +985,6 @@ Transform:
   m_Father: {fileID: 1187809818}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1960007780
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1960007778}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1960007781
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1115,7 +1045,6 @@ GameObject:
   - component: {fileID: 2119839865}
   - component: {fileID: 2119839868}
   - component: {fileID: 2119839867}
-  - component: {fileID: 2119839866}
   m_Layer: 0
   m_Name: URPUnlitShaderNormal
   m_TagString: Untagged
@@ -1137,19 +1066,6 @@ Transform:
   m_Father: {fileID: 1187809818}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 30.41, z: 0}
---- !u!135 &2119839866
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2119839864}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2119839867
 MeshRenderer:
   m_ObjectHideFlags: 0
