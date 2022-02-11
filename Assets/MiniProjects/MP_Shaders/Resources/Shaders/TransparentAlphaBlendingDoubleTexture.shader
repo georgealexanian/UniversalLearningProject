@@ -5,6 +5,8 @@ Shader "Example/TransparentAlphaBlendingDoubleTexture"
         [MainColor] _BaseColor ("Base Color", Color) = (0, 0, 1, 1)
         [MainTexture] _BaseMap ("Base Map", 2D) = "Black"
         _SecondMap ("Second Texture", 2D) = "Black"
+        [MaterialToggle] _BlendTextures("Blend Textures?", Float) = 0
+
     }
 
     SubShader
@@ -31,14 +33,15 @@ Shader "Example/TransparentAlphaBlendingDoubleTexture"
 
             TEXTURE2D(_SecondMap);
             SAMPLER(sampler_SecondMap);
-            
+
             CBUFFER_START(UnityPerMaterial)
             half4 _BaseColor;
+            float _BlendTextures;
             float4 _BaseMap_ST;
             float4 _SecondMap_ST;
             CBUFFER_END
 
-            struct INPUT 
+            struct INPUT
             {
                 half4 position : POSITION;
                 half2 uv : TEXCOORD0;
@@ -62,7 +65,20 @@ Shader "Example/TransparentAlphaBlendingDoubleTexture"
             {
                 half4 color = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, v2f.uv);
                 half4 color1 = SAMPLE_TEXTURE2D(_SecondMap, sampler_SecondMap, v2f.uv);
-                if (color.a == 0)
+
+                if (_BlendTextures == 0)
+                {
+                    if (color.a == 0)
+                    {
+                        color += color1;
+
+                        if (color.a == 0)
+                        {
+                            color.rgba = _BaseColor;
+                        }
+                    }
+                }
+                else
                 {
                     color += color1;
 
@@ -71,6 +87,7 @@ Shader "Example/TransparentAlphaBlendingDoubleTexture"
                         color.rgba = _BaseColor;
                     }
                 }
+
                 return color;
             }
             ENDHLSL
