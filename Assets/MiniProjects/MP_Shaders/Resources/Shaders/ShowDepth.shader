@@ -11,17 +11,19 @@ Shader "Example/ShowDepth"
         {
             "RenderType" = "Opaque"
         }
- 
+
         Pass
         {
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vert;
             #pragma fragment frag;
 
             #include "UnityCG.cginc"
 
+            CBUFFER_START(UnityPerMaterial)
             half4 _Color;
-            
+            CBUFFER_END
+
             struct INPUT
             {
                 float4 position : POSITION;
@@ -37,7 +39,7 @@ Shader "Example/ShowDepth"
             {
                 VTOF vtof;
                 vtof.position = UnityObjectToClipPos(input.position);
-                vtof.depth = -mul(UNITY_MATRIX_MV, input.position).z * _ProjectionParams.w;
+                vtof.depth = -UnityObjectToViewPos(input.position).z * _ProjectionParams.w;
                 return vtof;
             }
 
@@ -46,9 +48,9 @@ Shader "Example/ShowDepth"
                 half invert = 1 - vtof.depth;
                 return float4(invert, invert, invert, 1) * _Color;
             }
-            ENDCG
+            ENDHLSL
         }
     }
-    
-    
+
+
 }
