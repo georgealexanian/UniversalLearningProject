@@ -9,7 +9,7 @@ namespace MiniProjects.MP_Shaders.Scripts.Game
 
         private void OnEnable()
         {
-            GetComponent<Camera>().SetReplacementShader(replacementShader, "RenderType");
+            GetComponent<Camera>().SetReplacementShader(replacementShader, "");
         }
 
         private void OnDisable()

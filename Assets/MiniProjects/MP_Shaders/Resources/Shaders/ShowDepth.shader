@@ -2,7 +2,7 @@ Shader "Example/ShowDepth"
 {
     Properties
     {
-
+        _Color ("Color", Color) = (1, 1, 1, 1)
     }
 
     SubShader
@@ -11,7 +11,7 @@ Shader "Example/ShowDepth"
         {
             "RenderType" = "Opaque"
         }
-
+ 
         Pass
         {
             CGPROGRAM
@@ -20,6 +20,8 @@ Shader "Example/ShowDepth"
 
             #include "UnityCG.cginc"
 
+            half4 _Color;
+            
             struct INPUT
             {
                 float4 position : POSITION;
@@ -42,9 +44,11 @@ Shader "Example/ShowDepth"
             float4 frag(VTOF vtof) : SV_TARGET
             {
                 half invert = 1 - vtof.depth;
-                return float4(invert, invert, invert, 1);
+                return float4(invert, invert, invert, 1) * _Color;
             }
             ENDCG
         }
     }
+    
+    
 }
