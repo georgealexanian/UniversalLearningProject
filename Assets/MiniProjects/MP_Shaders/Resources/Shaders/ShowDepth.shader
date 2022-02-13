@@ -51,6 +51,4 @@ Shader "Example/ShowDepth"
             ENDHLSL
         }
     }
-
-
 }
