@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
   m_Name: ReplacementShader
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
     passTag: ReplacementShader
     Event: 300
@@ -144,7 +144,7 @@ MonoBehaviour:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 4294967295
+        m_Bits: 1024
       PassNames: []
     overrideMaterial: {fileID: 2100000, guid: a3571f1b5738747ae811a99109e1cc9b, type: 2}
     overrideMaterialPassIndex: 0
