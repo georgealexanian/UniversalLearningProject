@@ -3,6 +3,7 @@ Shader "Example/ShowDepth"
     Properties
     {
         _Color ("Color", Color) = (1, 1, 1, 1)
+        _DepthStrength("DepthStrength", Float) = 1
     }
 
     SubShader
@@ -22,6 +23,7 @@ Shader "Example/ShowDepth"
 
             CBUFFER_START(UnityPerMaterial)
             half4 _Color;
+            float _DepthStrength;
             CBUFFER_END
 
             struct INPUT
@@ -45,7 +47,7 @@ Shader "Example/ShowDepth"
 
             float4 frag(VTOF vtof) : SV_TARGET
             {
-                half invert = 1 - vtof.depth;
+                half invert = 1 - vtof.depth * _DepthStrength;
                 return float4(invert, invert, invert, 1) * _Color;
             }
             ENDHLSL
