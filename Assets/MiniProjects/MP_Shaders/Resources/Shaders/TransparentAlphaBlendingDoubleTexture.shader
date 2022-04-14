@@ -4,9 +4,8 @@ Shader "Example/TransparentAlphaBlendingDoubleTexture"
     {
         [MainColor] _BaseColor ("Base Color", Color) = (0, 0, 1, 1)
         [MainTexture] _BaseMap ("Base Map", 2D) = "Black"
-        [MaterialToggle] _BlendTextures("Blend Textures?", Float) = 0
         _SecondMap ("Second Texture", 2D) = "Black"
-
+        [MaterialToggle] _BlendTextures("Blend Textures?", Float) = 0
     }
 
     SubShader
