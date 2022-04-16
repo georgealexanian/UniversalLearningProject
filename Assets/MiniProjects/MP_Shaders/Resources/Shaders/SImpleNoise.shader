@@ -23,8 +23,6 @@ Shader "Example/SimpleNoise"
            struct V2F
            {
                float4 vertex : SV_POSITION;
-               float4 screenPosition : TEXCOORD2;
-               float4 position : TEXCOORD1;
                float2 uv : TEXCOORD0;
            };
 
@@ -34,14 +32,12 @@ Shader "Example/SimpleNoise"
                const float b = 78.233;
                const float c = 43758.543123;
                return frac(sin(dot(pt, float2(a, b)) + seed) * c);
-           }
+           } 
            
            V2F vert(appdata_base appdata)
            {
                V2F v2f;
                v2f.vertex = UnityObjectToClipPos(appdata.vertex);
-               v2f.screenPosition = ComputeScreenPos(appdata.vertex);
-               v2f.position = appdata.vertex;
                v2f.uv = appdata.texcoord;
                return v2f;
            }
