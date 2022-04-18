@@ -58,10 +58,10 @@ Shader "Example/BubbleTextures"
                 //rippling effect
                 float2 pos = v2f.vertex.xy * 2.0;
                 float len = length(pos);
-                float2 ripple = newUV + pos/len * 0.05 * cos(len * 12.0 - _Time.y * 100.0);
+                float2 ripple = newUV + pos/len * 0.03 * cos(len * 12.0 - _Time.y * 4.0);
                 float theta = fmod(_Time.y, _Duration) * (UNITY_TWO_PI / _Duration);
-                float delta = (sin(theta) + 1.0);
-                float2 rippledUV = lerp(ripple, newUV, delta);
+                float delta = (sin(theta) + 1.0) / 2.0;
+                float2 rippledUV = lerp(ripple, newUV, 0);
                 //
                 
                 fixed4 color = tex2D(_MainTex, rippledUV).rgba;
