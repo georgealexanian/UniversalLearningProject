@@ -5,6 +5,7 @@ Shader "Example/BubbleTextures"
         _MainTex ("Main Texture", 2D) = "white" {}
         _HorizontalFlip ("_HorizontalFlip", float) = 0
         _VerticalFlip ("_VerticalFlip", float) = 0
+        _Duration ("_Duration", float) = 6.0
     }
 
     SubShader
@@ -26,6 +27,7 @@ Shader "Example/BubbleTextures"
             sampler2D _MainTex;
             float _VerticalFlip;
             float _HorizontalFlip;
+            float _Duration;
 
             struct V2F
             {
@@ -53,9 +55,18 @@ Shader "Example/BubbleTextures"
                     newUV.x = 1 - v2f.uv.x;
                 }
 
-                fixed4 color = tex2D(_MainTex, newUV).rgba;
+                //rippling effect
+                float2 pos = v2f.vertex.xy * 2.0;
+                float len = length(pos);
+                float2 ripple = newUV + pos/len * 0.05 * cos(len * 12.0 - _Time.y * 100.0);
+                float theta = fmod(_Time.y, _Duration) * (UNITY_TWO_PI / _Duration);
+                float delta = (sin(theta) + 1.0);
+                float2 rippledUV = lerp(ripple, newUV, delta);
+                //
+                
+                fixed4 color = tex2D(_MainTex, rippledUV).rgba;
                 return color;
-            }
+            } 
             ENDCG
         }
     }
