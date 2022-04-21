@@ -6,6 +6,8 @@ Shader "Example/PositionLocator"
         _Radius ("Radius", Range(0, 3)) = 1
         _Position ("Position", Vector) = (0, 0, 0, 0)
         _CircleColor ("Circle Color", Color) = (1, 1, 1, 1)
+        _EdgeThickness ("_EdgeThickness", Range(0, 3)) = 0.01
+        _LineWidth ("_LineWidth", Range(0, 3)) = 0.1
     }
 
     SubShader
@@ -26,6 +28,8 @@ Shader "Example/PositionLocator"
 
             sampler2D _MainTex;
             float _Radius;
+            float _EdgeThickness;
+            float _LineWidth;
             float4 _Position;
             fixed4 _CircleColor;
 
@@ -63,7 +67,7 @@ Shader "Example/PositionLocator"
                 half4 color;
                 color = tex2D(_MainTex, v2f.uv);
 
-                float inCircle = CIRCLE(v2f.worldPos.xz, _Position.xz, _Radius, _Radius * 0.1, _Radius * 0.01);
+                float inCircle = CIRCLE(v2f.worldPos.xz, _Position.xz, _Radius, _Radius * _LineWidth, _Radius * _EdgeThickness);
                 fixed4 finalColor = lerp(color, _CircleColor, inCircle);
 
                 return finalColor;
