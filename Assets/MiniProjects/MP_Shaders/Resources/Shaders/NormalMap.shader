@@ -13,24 +13,47 @@ Shader "Example/NormalMap"
             "RenderType" = "Opaque"
         }
 
-        CGPROGRAM
-        #pragma surface surf Lambert
-
-        struct Input
+        Pass
         {
-            float2 uv_MainTex;
-            float2 uv_BumpMap;
-        };
+            HLSLPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
 
-        sampler2D _MainTex;
-        sampler2D _BumpMap;
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-        void surf(Input input, inout SurfaceOutput surfaceOutput)
-        {
-            surfaceOutput.Albedo = tex2D(_MainTex, input.uv_MainTex).rgb;
-            surfaceOutput.Normal = UnpackNormal(tex2D(_BumpMap, input.uv_BumpMap));
+            TEXTURE2D(_MainTex);
+            SAMPLER(sampler_MainTex);
+
+            CBUFFER_START(UnityPerMaterial)
+            float4 _MainTex_ST;
+            CBUFFER_END
+
+            struct VERTEXDATA
+            {
+                float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
+            };
+
+            struct V2F
+            {
+                float4 vertex : SV_POSITION;
+                float2 uv : TEXCOORD0;
+            };
+
+            V2F vert(VERTEXDATA vertexdata)
+            {
+                V2F v2f;
+                v2f.vertex = TransformObjectToHClip(vertexdata.vertex.xyz);
+                v2f.uv = TRANSFORM_TEX(vertexdata.uv, _MainTex);
+                return v2f;
+            }
+
+            half4 frag(V2F v2f) : SV_TARGET
+            {
+                half4 color = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, v2f.uv);
+                return color;
+            }
+            ENDHLSL
         }
-        ENDCG
     }
-    FallBack "Diffuse"
 }
