@@ -3,7 +3,7 @@ Shader "Example/URPUnlitShaderTexture"
     Properties
     {
         [MainColor] _BaseColor ("Base Color", Color) = (0, 0, 0, 1)
-        [MainTexture] _BaseMap ("Base Map", 2D) = "white"
+        [MainTexture] _MainTex ("Base Map", 2D) = "white"
     }
 
     SubShader
@@ -23,12 +23,12 @@ Shader "Example/URPUnlitShaderTexture"
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-            TEXTURE2D(_BaseMap);
-            SAMPLER(sampler_BaseMap);
+            TEXTURE2D(_MainTex);
+            SAMPLER(sampler_MainTex);
 
             CBUFFER_START(UnityPerMaterial)
             half4 _BaseColor;
-            float4 _BaseMap_ST;
+            float4 _MainTex_ST;
             CBUFFER_END
 
             struct INPUT
@@ -47,13 +47,13 @@ Shader "Example/URPUnlitShaderTexture"
             {
                 OUTPUT output;
                 output.positionSV = TransformObjectToHClip(input.position.xyz);
-                output.uvCoords = TRANSFORM_TEX(input.uvCoords, _BaseMap);
+                output.uvCoords = TRANSFORM_TEX(input.uvCoords, _MainTex);
                 return output;
             }
 
             half4 frag(INPUT input) : SV_TARGET
             {
-                half4 color = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, input.uvCoords);
+                half4 color = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, input.uvCoords);
                 color *= _BaseColor;
                 return color;
             }
