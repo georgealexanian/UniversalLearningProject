@@ -7,7 +7,8 @@ namespace MiniProjects.MP_Shaders.Scripts.Game
     {
         public ComputeShader computeShader;
         public int textureResolution = 256;
-
+        public string kernelName;
+        
         private Renderer rend;
         private RenderTexture outputTexture;
         private int kernelHandle;
@@ -35,7 +36,9 @@ namespace MiniProjects.MP_Shaders.Scripts.Game
 
         private void InitShader()
         {
-            kernelHandle = computeShader.FindKernel("CSMain");
+            kernelHandle = computeShader.FindKernel(kernelName);
+            computeShader.SetInt("textureResolution", textureResolution);
+            
             computeShader.SetTexture(kernelHandle, "Result", outputTexture);
             rend.material.SetTexture("_MainTex", outputTexture);
             

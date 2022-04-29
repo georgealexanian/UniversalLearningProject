@@ -1,13 +1,44 @@
 // Each #kernel tells which function to compile; you can have many kernels
-#pragma kernel CSMain
+#pragma kernel SolidRed
+#pragma kernel SolidYellow
+#pragma kernel SplitScreen
 
 // Create a RenderTexture with enableRandomWrite flag and set it
 // with cs.SetTexture
 RWTexture2D<float4> Result;
+int textureResolution;
 
 [numthreads(8,8,1)]
-void CSMain (uint3 id : SV_DispatchThreadID)
+void SolidRed (uint3 id : SV_DispatchThreadID)
 {
     // Result[id.xy] = float4(id.x & id.y, (id.x & 15)/15.0, (id.y & 15)/15.0, 0.0);
-    Result[id.xy] = float4(0, 1, 0, 0);
+    Result[id.xy] = float4(1.0, 0.0, 0.0, 1.0);
+}
+
+[numthreads(8,8,1)]
+void SolidYellow (uint3 id : SV_DispatchThreadID)
+{
+    Result[id.xy] = float4(1.0, 1.0, 0.0, 1.0);
+}
+
+[numthreads(8,8,1)]
+void SplitScreen (uint3 id : SV_DispatchThreadID)
+{
+    int halfRes = textureResolution / 2;
+    if (id.x < halfRes && id.y < halfRes)
+    {
+        Result[id.xy] = float4(1.0, 0.0, 0.0, 1.0);
+    }
+    else if (id.x >= halfRes && id.y >= halfRes)
+    {
+        Result[id.xy] = float4(1.0, 1.0, 0.0, 1.0);
+    }
+    else if (id.x < halfRes && id.y >= halfRes)
+    {
+        Result[id.xy] = float4(0.0, 1.0, 1.0, 1.0);
+    }
+    else if (id.x >= halfRes && id.y < halfRes)
+    {
+        Result[id.xy] = float4(1.0, 1.0, 1.0, 1.0);
+    }
 }
