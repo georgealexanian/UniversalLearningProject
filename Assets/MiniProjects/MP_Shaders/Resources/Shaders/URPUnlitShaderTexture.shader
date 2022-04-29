@@ -3,7 +3,7 @@ Shader "Example/URPUnlitShaderTexture"
     Properties
     {
         [MainColor] _BaseColor ("Base Color", Color) = (0, 0, 0, 1)
-        [MainTexture] _BaseMap ("Base Map", 2D) = "White"
+        [MainTexture] _BaseMap ("Base Map", 2D) = "white"
     }
 
     SubShader
@@ -54,6 +54,7 @@ Shader "Example/URPUnlitShaderTexture"
             half4 frag(INPUT input) : SV_TARGET
             {
                 half4 color = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, input.uvCoords);
+                color *= _BaseColor;
                 return color;
             }
             
