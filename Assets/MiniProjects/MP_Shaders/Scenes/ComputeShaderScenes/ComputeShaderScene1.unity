@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   computeShader: {fileID: 7200000, guid: 8e920b00209234f4b8b257bbf00a8907, type: 3}
   textureResolution: 256
-  kernelName: SplitScreen
+  kernelName: 3
 --- !u!23 &1106436892
 MeshRenderer:
   m_ObjectHideFlags: 0

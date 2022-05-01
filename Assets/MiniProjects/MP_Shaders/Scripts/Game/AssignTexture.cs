@@ -1,13 +1,12 @@
 namespace MiniProjects.MP_Shaders.Scripts.Game
 {
-    using System;
     using UnityEngine;
 
     public class AssignTexture : MonoBehaviour
     {
         public ComputeShader computeShader;
         public int textureResolution = 256;
-        public string kernelName;
+        public ComputeFunction kernelName;
         
         private Renderer rend;
         private RenderTexture outputTexture;
@@ -36,7 +35,7 @@ namespace MiniProjects.MP_Shaders.Scripts.Game
 
         private void InitShader()
         {
-            kernelHandle = computeShader.FindKernel(kernelName);
+            kernelHandle = computeShader.FindKernel(kernelName.ToString());
             computeShader.SetInt("textureResolution", textureResolution);
             
             computeShader.SetTexture(kernelHandle, "Result", outputTexture);
@@ -49,5 +48,13 @@ namespace MiniProjects.MP_Shaders.Scripts.Game
         {
             computeShader.Dispatch(kernelHandle, x, y, 1);
         }
+    }
+    
+    public enum ComputeFunction
+    {
+        SolidRed,
+        SolidYellow,
+        SplitScreen,
+        Circle
     }
 }
