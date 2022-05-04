@@ -763,6 +763,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1187809818}
     m_Modifications:
+    - target: {fileID: 5497132773884239897, guid: a2b1c254e50744c46b9ef924ec095d4f, type: 3}
+      propertyPath: m_Offset.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5497132773884239901, guid: a2b1c254e50744c46b9ef924ec095d4f, type: 3}
       propertyPath: m_Name
       value: DecalProjector
@@ -777,11 +781,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5497132773884239902, guid: a2b1c254e50744c46b9ef924ec095d4f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.917
+      value: 0.82
       objectReference: {fileID: 0}
     - target: {fileID: 5497132773884239902, guid: a2b1c254e50744c46b9ef924ec095d4f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.34
+      value: -3.59
       objectReference: {fileID: 0}
     - target: {fileID: 5497132773884239902, guid: a2b1c254e50744c46b9ef924ec095d4f, type: 3}
       propertyPath: m_LocalRotation.w
