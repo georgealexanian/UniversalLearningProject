@@ -44,6 +44,7 @@ namespace MiniProjects.MP_DrawingUsingGameObjectInstantiation.Scripts.Game
                     ? "jpg"
                     : "png";
             File.WriteAllBytes(Application.dataPath + "/Painting." + format, encodedData);
+            Debug.Log(Application.dataPath);
         }
     }
 }
