@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: b60bd001f8d86472cb4d32a96924eb4c, type: 2}
-  m_DrawDistance: 1000
-  m_FadeScale: 0.9
+  m_DrawDistance: 100
+  m_FadeScale: 0.807
   m_StartAngleFade: 180
   m_EndAngleFade: 180
   m_UVScale: {x: 1, y: 1}
